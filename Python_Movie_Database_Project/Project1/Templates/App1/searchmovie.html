@@ -1,0 +1,47 @@
+{% extends 'App1/base.html' %}
+{% load crispy_forms_tags%}
+
+{% block title %}
+<title>Show orders</title>
+{% endblock %}
+
+{% block content%}
+<table class="table table-dark">
+    <tr>
+        <th>ID</th>
+        <th>Movie_Name</th>
+        <th>Release_date</th>
+        <th>Movie_starcast</th>
+        <th>Movie_Director</th>
+
+
+
+
+
+    </tr>
+    {% for MovieRecord in record %}
+
+    <tr>
+        <td>{{MovieRecord.id}}</td>
+        <td>{{MovieRecord.Movie_Name}}</td>
+         <td>{{MovieRecord.Release_date}}</td>
+         <td>{{MovieRecord.Movie_starcast}}</td>
+        <td>{{MovieRecord.Movie_Director}}</td>
+
+
+
+
+
+
+        <td><a href="{% url 'update' MovieRecord.id %}"><button class="btn btn-warning">Update</button></a></td>
+        <td><a href="{% url 'delete' MovieRecord.id %}"><button class="btn btn-danger">Delete</button></a></td>
+
+
+    </tr>
+    {% endfor %}
+</table>
+<br>
+<a href="{% url 'book' %}">
+    <button class="btn btn-success">Add Movie</button>
+</a>
+{% endblock%}
